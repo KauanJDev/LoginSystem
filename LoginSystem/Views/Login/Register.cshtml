@@ -1,0 +1,43 @@
+﻿@using LoginSystem.Models
+@model UserModel
+
+<div class="text-center">
+    <h2>Register</h2>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@foreach (var modelError in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+{
+    <div class="alert alert-danger">@modelError.ErrorMessage</div>
+}
+
+<form asp-action="Register" asp-controller="Login" method="post">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username:</label>
+        <input type="text" asp-for="Username" class="form-control" id="username" aria-describedby="username">
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" asp-for="Email" class="form-control" id="email" aria-describedby="email">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" asp-for="Password" class="form-control" id="password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <span><a asp-controller="Login" asp-action="Index">Login</a></span> <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

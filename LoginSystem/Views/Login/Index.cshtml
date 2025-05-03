@@ -1,0 +1,31 @@
+﻿@model LoginSystem.Models.UserModel
+
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+
+<div class="text-center">
+    <h2>Login</h2>
+</div>
+
+<form asp-action="Login" asp-controller="Login" method="post">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" asp-for="Email" class="form-control" id="email" aria-describedby="email">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" asp-for="Password" class="form-control" id="password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div>
+        <span><a asp-controller="Login" asp-action="Register">Register</a></span> <br>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
