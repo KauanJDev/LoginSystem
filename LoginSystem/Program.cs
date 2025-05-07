@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DataContext>(options =>
 {
-    options.UseSqlServer("Server=DESKTOP-1P680RN;Database=Login;Trusted_Connection=True;TrustServerCertificate=True;");
+    options.UseSqlServer("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
